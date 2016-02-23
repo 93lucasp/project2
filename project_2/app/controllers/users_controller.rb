@@ -23,4 +23,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     render :show
   end
+
+  private
+
+  def address_to_lat_long(address)
+    res = HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + address, verify: false).parsed_response
+    res["results"][0]["geometry"]["location"]
+  end
+  
 end

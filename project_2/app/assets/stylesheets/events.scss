@@ -1,3 +1,43 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body { 
+height: 100%; 
+width: 100%; 
+margin: 0; 
+text-align: center;
+background-color: blue; 
+}
+
+.login {
+
+	border-radius: 10px;
+	background-color: gray;
+	width: 30%;
+	height: 16em;
+	margin: 10% auto;
+	text-align: center;
+	padding-top: 10% ;
+
+}
+.form {
+	width: 50%;
+	height: 2em;
+	border-radius: 8px;
+	margin-bottom: 2%;
+	outline: none;
+
+}
+
+.button {
+	top:2%;
+	position: relative;
+	padding: 1% 6%;
+	border-radius: 10px;
+	opacity: 0.9;
+	outline: none;
+	font-size: 1.2em;
+	background-color: #fff;
+
+}

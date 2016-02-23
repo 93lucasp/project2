@@ -1,3 +1,53 @@
-body {
-	background-color: red;
+html, body { 
+height: 100%; 
+width: 100%; 
+margin: 0; 
+text-align: center;
+background-color: blue; 
+}
+
+.signup {
+
+	border-radius: 10px;
+	background-color: gray;
+	width: 30%;
+	height: 20em;
+	margin: 10% auto;
+	text-align: center;
+	padding-top: 5% ;
+
+}
+.form {
+	width: 50%;
+	height: 2em;
+	border-radius: 8px;
+	margin-bottom: 2%;
+	outline: none;
+
+}
+
+.button {
+	top:2%;
+	position: relative;
+	padding: 1% 4%;
+	border-radius: 10px;
+	opacity: 0.9;
+	outline: none;
+	font-size: 1.2em;
+	background-color: #fff;
+
+}
+
+.user {
+	padding-top:15%;
+}
+
+#map {
+	margin: 4% auto;
+	border-radius: 15px;
+	width: 60%;
+	height: 80%;
+	
+	
+	
 }

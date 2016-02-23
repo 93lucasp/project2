@@ -1,23 +1,22 @@
 Sign Up
 
 <%= form_for @user do |f| %>
-  <div>
-    <%= f.text_field :first_name, placeholder: "First Name" %>
+  <div class="signup">
+    <%= f.text_field :first_name, placeholder: "First Name", class:'form' %>
+  
+    <%= f.text_field :last_name, placeholder: "Last Name", class:'form' %>
+  
+    <%= f.password_field :password, placeholder: "Password", class:'form' %>
+
+    <%= f.text_field :address, placeholder: "Address", class:'form' %>
+
+    <%= f.text_field :city, placeholder: "City", class:'form' %>
+ 
+    <%= f.text_field :email, placeholder: "Email", class:'form' %>
+ 
+    
+    <br />
+     <%= f.submit "Sign Up", class:'button' %>
   </div>
-  <div>
-    <%= f.text_field :last_name, placeholder: "Last Name" %>
-  </div>
-  <div>
-    <%= f.text_field :address, placeholder: "Address" %>
-  </div>
-  <div>
-    <%= f.text_field :city, placeholder: "City" %>
-  </div>
-  <div>
-    <%= f.text_field :email, placeholder: "Email" %>
-  </div>
-  <div>
-    <%= f.password_field :password, placeholder: "Password" %>
-  </div>
-  <%= f.submit "Sign Up" %>
+ 
 <% end %> 

@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-	def new
+	  def new
     @user = User.new
     render :new
     end
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     else
       redirect_to "/sign_in"
     end
-  end
+    end
 
   def destroy
     logout
