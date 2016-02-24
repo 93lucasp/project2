@@ -24,35 +24,25 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    
+   
     # @adress= User.find(params[:id]).address
    
-    @users= User.all
-      
-      def user_lats
-        users = User.all.map do |l|
-        l.lat
-        end
-      end
+    # grab all the hosts
+    @hosts = User.where(true_or_false: true)
+    
+    @lats = user_lats
+    @lngs = user_lngs
 
-      def user_lngs
-        users = User.all.map do |l|
-        l.lng
-        end
+    @lats.count.times do |count|
+      if @lats[count] == nil 
+        @lats[count] = @user.lat
       end
-      @lats = user_lats
-      @lngs = user_lngs
-
-      @lats.count.times do |count|
-        if @lats[count] == nil 
-          @lats[count] = @user.lat
-        end
+    end
+    @lngs.count.times do |count|
+      if @lngs[count] == nil 
+        @lngs[count] = @user.lng
       end
-      @lngs.count.times do |count|
-        if @lngs[count] == nil 
-          @lngs[count] = @user.lng
-        end
-      end
+    end
 
 
     # hosts = User.where(true_or_false: true)
@@ -65,6 +55,20 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_lats
+    lats = @hosts.map do |l|
+      l.lat
+    end
+    lats
+  end
+
+  def user_lngs
+    lngs = @hosts.map do |l|
+      l.lng
+    end
+    lngs
+  end
 
   def address_to_lat_long(address)    
       # @event.lat = lat_long["lat"]
