@@ -1,19 +1,47 @@
 <div class="user">
- <%= @user.first_name %> 
+ <h1><%= "Welcome "+ @user.first_name + " !" %> </h1>
+ <h3>Find neighbor and watch the match together.</h3>
+
+
 </div>
 
-
+<% if current_user.true_or_false %>
 
 <div id="map"></div>
     <script>
-      function initMap() {
+      function initMap(coords) {
         var mapDiv = document.getElementById('map');
         var map = new google.maps.Map(mapDiv, {
-          center: {lat: 41.89, lng: 12.51
-},
-          zoom: 5
+          center: {lat: <%=@coords["lat"]%>, lng: <%=@coords["lng"]%>},
+          zoom: 13
         });
+        var marker = new google.maps.Marker({
+          position: {lat: <%=@coords["lat"]%>, lng: <%=@coords["lng"]%>},
+          map: map,
+          title: 'Your map'
+        });
+
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
         async defer></script>
+
+<% else %>
+
+<div id="map"></div>
+    <script>
+      function initMap(coords) {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: <%=@coords["lat"]%>, lng: <%=@coords["lng"]%>},
+          zoom: 13
+        });
+
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
+
+<% end %>
+
+<!-- if current_user.true_or_false == false -->

@@ -3,13 +3,13 @@ height: 100%;
 width: 100%; 
 margin: 0; 
 text-align: center;
-background-color: blue; 
+background-color: #D2D2D2; 
 }
 
 .signup {
-
+	border: 1px solid gray;
 	border-radius: 10px;
-	background-color: gray;
+	background-color: #fff;;
 	width: 30%;
 	height: 20em;
 	margin: 10% auto;
@@ -39,7 +39,7 @@ background-color: blue;
 }
 
 .user {
-	padding-top:15%;
+	padding-top:8%;
 }
 
 #map {

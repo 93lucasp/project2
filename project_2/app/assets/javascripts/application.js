@@ -14,3 +14,18 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require main
+
+
+      // function initMap(coords) {
+      //   var mapDiv = document.getElementById('map');
+      //   var map = new google.maps.Map(mapDiv, {
+      //     center: {lat: coords["lat"], lng: coords["lng"]},
+      //     zoom: 5
+      //   });
+      //   var marker = new google.maps.Marker({
+      //     position: {lat: coords["lat"], lng: coords["lng"]},
+      //     map: map,
+      //     title: 'Hello World!'
+      //   });
+
+      // }

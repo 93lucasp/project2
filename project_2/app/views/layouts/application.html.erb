@@ -14,8 +14,11 @@
  		
         <% if current_user %>
         	<%= link_to "Logout", sign_out_path %>
-          <%= link_to "Create", new_user_event_path(current_user) %>
+          
+          <!-- if current_user.true_or_falsa == true -->
 
+          <%= link_to "Create", new_user_event_path(current_user) %>
+          
         <% else %>
         	<%= link_to "Login", sign_in_path %>
         <% end %>
