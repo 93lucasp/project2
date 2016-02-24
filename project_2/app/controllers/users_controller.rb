@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     user_params = params.require(:user).permit(:first_name, :last_name, :address, :city, :email, :password, :true_or_false, :lat, :lng)
     @user = User.create(user_params)
     userAddressFull = @user.address+" , "+@user.city
-    @coords=address_to_lat_long(userAddressFull)
+    @coords = address_to_lat_long(userAddressFull)
     @user.update(:lat => @coords["lat"], :lng => @coords["lng"])
     login(@user) # <-- login the user
     redirect_to "/users/#{@user.id}" # <-- go to show
@@ -24,12 +24,37 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @users= User.all
-    # @adress= User.find(params[:id]).address
-    userAddressFull = @user.address+" , "+@user.city
-    @coords=address_to_lat_long(userAddressFull)
-
     
+    # @adress= User.find(params[:id]).address
+   
+    @users= User.all
+      
+      def user_lats
+        users = User.all.map do |l|
+        l.lat
+        end
+      end
+
+      def user_lngs
+        users = User.all.map do |l|
+        l.lng
+        end
+      end
+      @lats = user_lats
+      @lngs = user_lngs
+
+      @lats.count.times do |count|
+        if @lats[count] == nil 
+          @lats[count] = @user.lat
+        end
+      end
+      @lngs.count.times do |count|
+        if @lngs[count] == nil 
+          @lngs[count] = @user.lng
+        end
+      end
+
+
     # hosts = User.where(true_or_false: true)
     # @host_addresses = hosts.map do |host|
     #   address_to_lat_long(host.address)
