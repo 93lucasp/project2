@@ -11,22 +11,24 @@
 <body>
 
 	<header id="header">
- 		
+    
         <% if current_user %>
-        	<%= link_to "Logout", sign_out_path %>
+          <%= link_to "Logout", sign_out_path %>
+          <%= link_to "Home", root_path %>
           
-          <!-- if current_user.true_or_falsa == true -->
+          <% if current_user.true_or_false == true %>
 
           <%= link_to "Create", new_user_event_path(current_user) %>
-          
+          <% end %>
         <% else %>
-        	<%= link_to "Login", sign_in_path %>
+          <%= link_to "Login", sign_in_path %>
+          <%= link_to "Home", root_path %>
         <% end %>
-     	 
-    	
-   			<%= link_to "Home", root_path %>
-   	
-	</header>
+       
+      
+        
+    
+  </header>
 
 
 <%= yield %>

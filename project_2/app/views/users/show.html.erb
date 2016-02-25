@@ -1,20 +1,27 @@
 <div class="user">
  <h1><%= "Welcome "+ @user.first_name + " !" %> </h1>
  <h3>Find neighbor and watch the match together.</h3>
+ </div>
+  </div>
+<%= javascript_tag do %>
+  window.hosts = JSON.parse('<%= raw @hosts.to_json %>');
+<% end %>
+
+<!-- <div id="pop_event">
+  <h2><%= @user.first_name + " " + @user.last_name %></h2>
+   <h2> </h2>
+    <button class="restart2">
+      <h3>Join</h3>
+    </button>
+  
 
 
 </div>
+ -->
+ 
 <!-- refactor script tags later -->
 <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async></script>
-<script>
-  function renderMarks(lat,lng) {
-        var marker = new google.maps.Marker({
-          position: {lat: lat, lng: lng},
-          map: map,
-          title: 'Your map'
-        });         
-      }
-</script>
+
 <!-- script tags -->
 
 <!-- if a host -->
@@ -22,54 +29,128 @@
 <div id="map"></div>
  
 <script>
+
+function renderMarks(options) {
+  var lat = options.lat;
+  var lng = options.lng;
+  var game = options.game;
+  var address = options.address;
+  var marker = new google.maps.Marker({
+    position: {lat: lat, lng: lng},
+    map: map,
+    title: 'Your map'
+  });
+
+  var contentString = '<h2>' + game + " at " + address + '</h2>';
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  });        
+ 
+}
+
 var mapDiv = document.getElementById('map');
-var map;
-      
+var map, infowindow;
+
 function initMap(){
     
-        map = new google.maps.Map(mapDiv, {
-          center: {lat: <%=@user["lat"]%>,  lng: <%=@user["lng"]%>},
-          zoom: 13
-        });
+  map = new google.maps.Map(mapDiv, {
+    center: {lat: <%=@user["lat"]%>,  lng: <%=@user["lng"]%>},
+    zoom: 13
+  });
+  
+  var userMarker = new google.maps.Marker({
+      position: {lat:<%=@user["lat"]%>, lng:<%=@user["lng"]%>},
+      map: map,
+      title: 'Your map'
+    });
 
+  var contentString = '<h2>' + 'No event' + '</h2>';
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
 
-        var marker = new google.maps.Marker({
-            position: {lat:<%=@user["lat"]%>, lng:<%=@user["lng"]%>},
-            map: map,
-            title: 'Your map'
-          }); 
+  userMarker.addListener('click', function() {
+    infowindow.open(map, userMarker);
+  });
 
+  <% @events.each_with_index do |event, count| %>
+    var eventOptions = {
+      lat: <%= @lats[count] %>,
+      lng: <%= @lngs[count] %>,
+      game: <%= raw event.game.to_json %>,
+      address: <%= raw event.user.address.to_json %>
+    }
+    renderMarks(eventOptions);
 
-
-
-        <% @lats.count.times do |count| %>
-          renderMarks(<%= @lats[count] %>, <%= @lngs[count] %>);
-        <% end %>
-    }  
+    
+  <% end %>
+}  
       
-  </script>
+</script>
+
+
+
+
 <!-- if a guest -->
+
+
+
+
   <% else %>
     
     <div id="map"></div>
  
 <script>
+
+function renderMarks(options) {
+  var lat = options.lat;
+  var lng = options.lng;
+  var game = options.game;
+  var address = options.address;
+  var marker = new google.maps.Marker({
+    position: {lat: lat, lng: lng},
+    map: map,
+    title: 'Your map'
+  });
+
+  var contentString = '<h2>' + game + " at " + address + '</h2>';
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  });        
+ 
+}
+
 var mapDiv = document.getElementById('map');
-var map;
-      
+var map, infowindow;
+
 function initMap(){
     
-        map = new google.maps.Map(mapDiv, {
-          center: {lat: <%=@user["lat"]%>,  lng: <%=@user["lng"]%>},
-          zoom: 13
-        });
-          <% @lats.count.times do |count| %>
-          renderMarks(<%= @lats[count] %>, <%= @lngs[count] %>);
+  map = new google.maps.Map(mapDiv, {
+    center: {lat: <%=@user["lat"]%>,  lng: <%=@user["lng"]%>},
+    zoom: 13
+  });
+  
+  
 
-
-        <% end %>
-        
-    }  
+  <% @events.each_with_index do |event, count| %>
+    var eventOptions = {
+      lat: <%= @lats[count] %>,
+      lng: <%= @lngs[count] %>,
+      game: <%= raw event.game.to_json %>,
+      address: <%= raw event.user.address.to_json %>
+    }
+    renderMarks(eventOptions);
+  <% end %>
+}  
+      
 </script>
 
 <% end %>

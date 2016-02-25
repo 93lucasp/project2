@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
 	has_secure_password
-	# has_many :events
-	has_many :events, dependent: :destroy
+	has_one :event
+	has_many :attendances
+	has_many :events, through: :attendances
+	
 
 
 	def self.confirm(params)
