@@ -21,8 +21,8 @@ Ruby on Rails app
  ####  HTML
  #### CSS
 
-#### You can play:
-<https://fierce-citadel-88357.herokuapp.com/>
+#### You can try the app:
+<https://secure-oasis-14659.herokuapp.com>
 #### You can find it on GitHub:
 <https://github.com/93lucasp/project2/tree/develop>
 
