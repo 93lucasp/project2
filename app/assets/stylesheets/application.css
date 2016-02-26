@@ -73,7 +73,7 @@ a:hover {
 }
 
 .parallex {
-	background-image: url("background_header.png"); 
+	background-image: url("/public/background_header.png"); 
 	background-attachment: fixed;
 	height: 60%;
 	text-align: center;
@@ -100,7 +100,7 @@ a:hover {
 
 
 #television {
-	background-image: url("lavagna.jpg"); 
+	background-image: url("/public/lavagna.jpg"); 
 	height: 80%;
 	text-align: center;
 	background-size: cover;
