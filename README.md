@@ -33,6 +33,7 @@ Ruby on Rails app
 * If you are host, you address will be not on the map and you have only to find the who is watching the match near to you and join it.
 
 ### Next goals: 
+* Resolve Issue home when you are Login
 * Make the code dryer
 * Insert good immages
 * Make a better style and make it responsive
