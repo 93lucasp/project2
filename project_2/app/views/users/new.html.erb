@@ -12,7 +12,7 @@ Sign Up
 
     <%= f.text_field :city, placeholder: "City", class:'form' %>
  
-    <%= f.text_field :email, placeholder: "Email", class:'form' %>
+    <%= f.email_field :email, placeholder: "Email", class:'form' %>
   <br />
    
     <%= f.select(:true_or_false, options_for_select([['Host', true], ['Guest', false]])) %>

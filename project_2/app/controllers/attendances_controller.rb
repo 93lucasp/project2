@@ -4,5 +4,14 @@ class AttendancesController < ApplicationController
    		@events = @user.events
 
   		render :index
-  end
+  	end
+
+	def joinEvent
+  		@user = current_user
+  		@event = Event.find(params[:event_id])
+  		@user.events.push(@event)
+  		redirect_to  "/events/:event_id"
+  		
+	end
+
 end

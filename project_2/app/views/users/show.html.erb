@@ -1,6 +1,6 @@
 <div class="user">
- <h1><%= "Welcome "+ @user.first_name + " !" %> </h1>
- <h3>Find neighbor and watch the match together.</h3>
+<div class="overlay" onClick="style.pointerEvents='none'"></div>
+
  </div>
   </div>
 <%= javascript_tag do %>
@@ -35,13 +35,16 @@ function renderMarks(options) {
   var lng = options.lng;
   var game = options.game;
   var places = options.places;
+  var user = options.id;
+  var eventID = options.eventID;
   var marker = new google.maps.Marker({
     position: {lat: lat, lng: lng},
     map: map,
     title: 'Your map'
   });
 
-  var contentString = '<h2>' + game + "<br />" + " Places: " + places + "<br />" + '<button id ="join">' + "Join" + '</button>' + '</h2>';
+var contentString = '<h2>' + game + "<br />" + " Places: " + places + "<br />" + "<a class='button1' href='/users/"+ user +"/events/"+eventID+"'>" + "Join" + '</a>' + '</h2>';
+
   var infowindow = new google.maps.InfoWindow({
     content: contentString
   });
@@ -82,7 +85,9 @@ function initMap(){
       lat: <%= @lats[count] %>,
       lng: <%= @lngs[count] %>,
       game: <%= raw event.game.to_json %>,
-      places: <%= raw event.number_places.to_json %>
+      places: <%= raw event.number_places.to_json %>,
+      id: <%= @user.id %>,
+      eventID: <%= event.id %>
     }
     renderMarks(eventOptions);
 
@@ -111,13 +116,15 @@ function renderMarks(options) {
   var lng = options.lng;
   var game = options.game;
   var places = options.places;
+  var user = options.id;
+  var eventID = options.eventID;
   var marker = new google.maps.Marker({
     position: {lat: lat, lng: lng},
     map: map,
     title: 'Your map'
   });
 
-  var contentString = '<h2>' + game + "<br />" + " Places: " + places + "<br />" + '<button id ="join">' + "Join" + '</button>' + '</h2>';
+  var contentString = '<h2>' + game + "<br />" + " Places: " + places + "<br />" + "<a class='button1' href='/users/"+ user +"/events/"+eventID+"'>" + "Join" + '</a>' + '</h2>';
   var infowindow = new google.maps.InfoWindow({
     content: contentString
   });
@@ -145,7 +152,9 @@ function initMap(){
       lat: <%= @lats[count] %>,
       lng: <%= @lngs[count] %>,
       game: <%= raw event.game.to_json %>,
-      places: <%= raw event.number_places.to_json %>
+      places: <%= raw event.number_places.to_json %>,
+      id: <%= @user.id %>,
+      eventID: <%= event.id %>
     }
     renderMarks(eventOptions);
   <% end %>
@@ -154,3 +163,8 @@ function initMap(){
 </script>
 
 <% end %>
+
+<div id="find_some_one">
+  <h3>Find your neighbor !</h3>
+  <p>Look who is around you and join the game of your team!</p>
+</div>
