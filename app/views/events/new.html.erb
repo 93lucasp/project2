@@ -1,0 +1,15 @@
+<div></div>
+
+<%= form_for @event, url: user_events_path(current_user), method: "post" do |f| %>
+  <div class="login">
+    <%= f.text_field :game, placeholder: "game", class:'form' %>
+     <br />
+
+    <%= f.text_field :number_places, placeholder: "Places", class:'form' %>
+    <br />
+    <%= f.submit "Create", class:'button' %>
+  </div>
+  
+<% end %> 
+
+<!-- comand z -->

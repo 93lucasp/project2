@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Project2</title>
+  
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag params[:controller], media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <header id="header">
+    
+        <% if current_user %>
+          <%= link_to "Logout", sign_out_path %>
+          <% if current_user.true_or_false == true %>
+
+          <%= link_to "Create", new_user_event_path(current_user) %>
+          <% end %>
+          <%=  link_to current_user.first_name, current_user %> 
+          
+          
+        <% else %>
+          <%= link_to "Login", sign_in_path %>
+          <%= link_to "Home", root_path %>
+          
+        <% end %>
+       
+      
+        
+    
+  </header>
+
+
+<%= yield %>
+<footer>
+    <p>Developed by Luca Spezzano</p>
+  
+</footer>
+
+</body>
+</html>

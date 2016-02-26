@@ -1,0 +1,58 @@
+<head>
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+</head>
+<script type="text/javasript">
+	(function () {
+		var documentEl = $(document),
+		parralexBg = $('div.parallex');
+
+		documentEl.on('scroll', function() {
+			var currScrollPos = documentEl.scollTop();
+			parallaxBg.css('background-position', '0' + -currScrollPos/4 + 'px');
+		});
+	})();
+  
+</script>
+<div class="main">
+     <div class="parallex">
+		<hr width="60%">
+		<h1>Together is better !</h1>
+		<hr width="60%">
+		<br />
+       <%= link_to "Sign Up", new_user_path, class:'button' %>
+	 </div>
+   
+</div>
+
+<div id="how_it_works">
+
+<h2>How it works</h2>
+<p>HOST</p>
+<p>The adress will appear on the map and you are able to create an event that the guests are able to join. </p>
+<p>When you have created the event you have only wait that some guest will join you.</p>
+<p>GUEST</p>
+<p>The adress will not appear on the map and you are able to join the event created from the hosts. </p>
+<p>You can find the host most near to you and join the event clicking on the marker of the map</p>
+       
+   
+</div>
+
+<div id="television">
+
+<h2>Benefits</h2>
+<h3>Host</h3>
+<p>Make new friends.</p>
+<p>Enjoy the game of your favourite team with someone else.</p>
+<p>Have fun</p>
+<p>Not anymore alone</p>
+<h3>Guest</h3>
+<p>Make new friends.</p>
+<p>Watch the game of your team for free.</p>
+<p>Have fun.</p>
+
+
+       
+   
+</div>
+
+

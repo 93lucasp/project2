@@ -1,0 +1,125 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_self
+ */
+ html, body { 
+height: 100%; 
+width: 100%; 
+margin: 0; 
+font-family: 'Oswald', sans-serif;
+background-color: #fff;
+text-align: center; 
+}
+
+
+
+#header {
+	width: 100%;
+	height: 10%;
+	background-color: #fff;
+	text-align: right;
+	padding-top: 2% ;
+	position: fixed;
+	z-index: 100;
+
+}
+
+#header < .home{
+	text-align: left;
+}
+
+.button {
+	top:30%;
+	position: relative;
+	padding: 1% 2%;
+	border-radius: 15px;
+	opacity: 0.9;
+	outline: none;
+	font-size: 1.2em;
+	background-color: #fff;
+
+}
+
+.button:hover {
+	background-color: #bae5fd;
+	cursor: pointer;
+
+}
+
+
+a {
+	text-decoration: none;
+	color: #000;
+	font-size: 1.2em;
+	top: 50;
+	padding: 0 4%;
+	
+}
+
+a:hover {
+	text-decoration: underline;
+}
+.main {
+	height: 600px;
+	background-color: #fff;
+}
+
+.parallex {
+	background-image: url("background_header.png"); 
+	background-attachment: fixed;
+	height: 60%;
+	text-align: center;
+	background-size: content;
+	background-repeat: no-repeat;
+	padding-top: 17%;
+	color: #fff;
+	transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	
+}
+
+#how_it_works {
+	background-color:#fff;
+	height: 60%;
+	text-align: center;
+	background-size: cover;
+	margin-top: -2%;
+	color: #000;
+	padding-top: 2%;
+	margin-bottom: 4%;
+}
+
+
+#television {
+	background-image: url("lavagna.jpg"); 
+	height: 80%;
+	text-align: center;
+	background-size: cover;
+	margin-top: -2%;
+	color: #fff;
+	padding-top: 2%;
+
+}
+
+footer {
+	width: 100%;
+
+	margin-top: 4%;
+
+	padding-top: 4%;
+	background-color: #fff;
+	height: 10%;
+	color: #000;
+}
+
