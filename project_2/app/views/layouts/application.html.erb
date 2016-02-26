@@ -14,7 +14,7 @@
     
         <% if current_user %>
           <%= link_to "Logout", sign_out_path %>
-          <%= link_to "Home", root_path %>
+          <%= link_to "Home", root_path, class:'home'  %>
           
           <% if current_user.true_or_false == true %>
 

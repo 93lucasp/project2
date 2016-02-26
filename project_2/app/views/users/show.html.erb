@@ -34,14 +34,14 @@ function renderMarks(options) {
   var lat = options.lat;
   var lng = options.lng;
   var game = options.game;
-  var address = options.address;
+  var places = options.places;
   var marker = new google.maps.Marker({
     position: {lat: lat, lng: lng},
     map: map,
     title: 'Your map'
   });
 
-  var contentString = '<h2>' + game + " at " + address + '</h2>';
+  var contentString = '<h2>' + game + "<br />" + " Places: " + places + "<br />" + '<button id ="join">' + "Join" + '</button>' + '</h2>';
   var infowindow = new google.maps.InfoWindow({
     content: contentString
   });
@@ -82,7 +82,7 @@ function initMap(){
       lat: <%= @lats[count] %>,
       lng: <%= @lngs[count] %>,
       game: <%= raw event.game.to_json %>,
-      address: <%= raw event.user.address.to_json %>
+      places: <%= raw event.number_places.to_json %>
     }
     renderMarks(eventOptions);
 
@@ -110,14 +110,14 @@ function renderMarks(options) {
   var lat = options.lat;
   var lng = options.lng;
   var game = options.game;
-  var address = options.address;
+  var places = options.places;
   var marker = new google.maps.Marker({
     position: {lat: lat, lng: lng},
     map: map,
     title: 'Your map'
   });
 
-  var contentString = '<h2>' + game + " at " + address + '</h2>';
+  var contentString = '<h2>' + game + "<br />" + " Places: " + places + "<br />" + '<button id ="join">' + "Join" + '</button>' + '</h2>';
   var infowindow = new google.maps.InfoWindow({
     content: contentString
   });
@@ -145,7 +145,7 @@ function initMap(){
       lat: <%= @lats[count] %>,
       lng: <%= @lngs[count] %>,
       game: <%= raw event.game.to_json %>,
-      address: <%= raw event.user.address.to_json %>
+      places: <%= raw event.number_places.to_json %>
     }
     renderMarks(eventOptions);
   <% end %>
