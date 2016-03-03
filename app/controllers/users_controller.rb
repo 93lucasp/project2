@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
 	def index
     @users = User.all
-		render :index		
+		render :index
 	end
 	def new
     # we need to make
     # a new user
-    # to pass to the 
+    # to pass to the
     # form later
     @user = User.new
     render :new
@@ -24,24 +24,24 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-   
-   
+
+
     # @adress= User.find(params[:id]).address
-   
+
     # grab all the hosts
     # @hosts = User.where(true_or_false: true)
     @events = Event.where.not(user_id: nil)
-    
+
     @lats = user_lats
     @lngs = user_lngs
-
+		#FIXME: I'd write more comments explaining this. I'm not sure what it's doing.
     @lats.count.times do |count|
-      if @lats[count] == nil 
+      if @lats[count] == nil
         @lats[count] = @user.lat
       end
     end
     @lngs.count.times do |count|
-      if @lngs[count] == nil 
+      if @lngs[count] == nil
         @lngs[count] = @user.lng
       end
     end
@@ -70,7 +70,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def address_to_lat_long(address)    
+  def address_to_lat_long(address)
       # @event.lat = lat_long["lat"]
       # @event.long = lat_long["long"]
       res = HTTParty.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + address, verify: false).parsed_response

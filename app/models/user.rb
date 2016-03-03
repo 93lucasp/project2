@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
 	has_one :event
 	has_many :attendances
 	has_many :events, through: :attendances
-	
+
+	#OPTIMIZE: add some validations to your user
 
 
 	def self.confirm(params)
